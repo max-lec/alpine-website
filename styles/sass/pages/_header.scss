@@ -1,0 +1,137 @@
+.header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+  // title part
+  .title-wrapper {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  // menus part
+  .nav {
+    flex: 0.2;
+
+    .nav-wrapper {
+      @extend %link_no_deco;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      .nav-link {
+        text-align: center;
+        padding-bottom: 40px;
+
+        span {
+          display: block;
+          padding-bottom: 10px;
+        }
+
+        // this makes the line under every menu item
+        &:after {
+          height: 2px;
+          width: 50%;
+          display: inline-block;
+          content: '';
+          background: $theme-text;
+        
+          -o-transition: width .3s ease-out;
+          -ms-transition: width .3s ease-out;
+          -moz-transition: width .3s ease-out;
+          -webkit-transition: width .3s ease-out;
+          transition: width .3s ease-out;
+        }
+
+        // menu hover logic
+        &:hover {
+          color: rgba($theme-text, 0.7);
+          
+          &:after{
+            width : 80%;
+            background: rgba($theme-text, 0.7);
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
+/* Responsive parts */
+
+
+@include phone {
+  .header {
+    .title-wrapper {
+      span {
+        font-size: 2rem;
+      }
+    }
+
+    .nav-wrapper {
+      flex-direction: column;
+
+      .nav-link {
+        span {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+
+@include tablet {
+  .header {
+    .title-wrapper {
+      span {
+        font-size: 3rem;
+      }
+    }
+
+    .nav-wrapper {
+      flex-direction: row;
+      
+      .nav-link {
+        span {
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}
+
+
+@include desktop {
+  .header {
+    .title-wrapper {
+      span {
+        font-size: 4rem;
+      }
+    }
+
+    .nav-wrapper {
+      flex-direction: row;
+
+      .nav-link {
+        span {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}

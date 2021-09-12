@@ -1,0 +1,39 @@
+
+
+
+/* Themes */
+
+// work theme :
+$theme-text: #072849;
+$theme-bg: #fafaf0;
+$theme-highlight: #034d5e;
+
+// olivia theme :
+// $theme-text: #2b2b2b;
+// $theme-bg: #e1dbd1;
+// $theme-highlight: #f1beb0;
+
+
+
+/* Resposive mixins */
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin phone {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

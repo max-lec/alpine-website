@@ -1,0 +1,34 @@
+#what {
+
+  .what-wrapper {
+    @extend %section_wrapper;
+
+    .title-wrapper {
+      padding-bottom: 20px;
+
+      span {
+        font-size: 2rem;
+      }
+
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .text-content {
+        padding-bottom: 20px;
+      }
+
+      .img-content {
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+  }
+
+}

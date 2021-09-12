@@ -1,5 +1,10 @@
-@import 'variables';
+@import 'common/variables';
+@import 'common/global';
 
-@import 'home';
+@import 'pages/home';
+@import 'pages/header';
+@import 'pages/where';
+@import 'pages/what';
+@import 'pages/who';
 
 

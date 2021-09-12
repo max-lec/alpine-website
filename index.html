@@ -1,4 +1,17 @@
 <html>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('titles', () => ({
+            site_title: 'My alpine webiste',
+            home_title: 'Home', 
+            who_title: 'About', 
+            what_title: 'Projects', 
+            where_title: 'Contact' ,
+        }))
+    })
+</script>
+
 <head>
     <script defer src="./lib/alpine.3.x.x.min.js"></script>
 
@@ -15,46 +28,46 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="favicon/browserconfig.xml">
 
-    <title>My alpine website</title>
+    <title x-data="titles" x-text="site_title"></title>
 </head>
 
-<script>
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('titles', () => ({
-            home_title: 'Home', 
-            who_title: 'About', 
-            what_title: 'Projects', 
-            where_title: 'Contact' ,
-        }))
-    })
-</script>
 
 <body>
 
-    <!-- Main navigation header -->
-    <nav class="nav">
-
-        <div class="nav-wrapper" x-data="titles">
-
-            <a class="nav-link" href="#home">
-                <span x-text="home_title"></span>
-            </a>
-
-            <a class="nav-link" href="#who">
-                <span x-text="who_title"></span>
-            </a>
-
-            <a class="nav-link" href="#what">
-                <span x-text="what_title"></span>
-            </a>
-
-            <a class="nav-link" href="#where">
-                <span x-text="where_title"></span>
-            </a>
-
+    <!-- Main header-->
+    <div class="header">
+        
+        <!-- Title header -->
+        <div class="title-wrapper" x-data="titles">
+            <span x-text="site_title"></span>
         </div>
 
-    </nav>
+        <!-- Navigation header -->
+        <nav class="nav">
+
+            <div class="nav-wrapper" x-data="titles">
+
+                <a class="nav-link" href="#home">
+                    <span x-text="home_title"></span>
+                </a>
+
+                <a class="nav-link" href="#who">
+                    <span x-text="who_title"></span>
+                </a>
+
+                <a class="nav-link" href="#what">
+                    <span x-text="what_title"></span>
+                </a>
+
+                <a class="nav-link" href="#where">
+                    <span x-text="where_title"></span>
+                </a>
+
+            </div>
+
+        </nav>
+
+    </div>
 
 
 
@@ -69,16 +82,14 @@
 
             <div class="content-wrapper">
 
-                <div class="content">
+                <div class="text-content">
+                    <p>Welcome to my website :)</p>
+                    <p>Under here you will find a quick introduction of who I am, my resume and projects, and how to contact me.</p>
+                    <p>I hope you enjoy your stay.</p>
+                </div>  
 
-                    <span class="text-content">
-                        Home content
-                    </span>  
-
-                    <div class="img-content">
-                        <img src="./images/cool-dog.jpeg" />
-                    </div>
-
+                <div class="img-content">
+                    <img src="./images/cool-dog.jpeg" />
                 </div>
 
             </div>
@@ -105,9 +116,13 @@
                         <img src="./images/smiling-dog.jpeg" />
                     </div>
 
-                    <span class="text-content">
-                        About content
-                    </span>  
+                    <div class="text-content">
+                        <p>This is a test website.</p>
+                        <p>This website only uses pure html and css (sass as a preprocessor), and a Javascript library called Alpine.js</p>
+                        <p>After spending a lot of time with Angular at work, I wanted to try out a simpler, more elegant solution for personal websites.</p>
+                        <p>You can find Alpine.js <a href="https://alpinejs.dev/" target="_blank">here</a>, but basically it is a modern, extremely lightweight data binding library (à la jQuery).</p>
+                        <p>The code for this website can be found on my <a href="https://github.com/max-lec/alpine-website" target="_blank">github</a>.</p>
+                    </div>  
 
                 </div>
 
@@ -129,9 +144,9 @@
 
                 <div class="content">
 
-                    <span class="text-content">
+                    <div class="text-content">
                         Projects content
-                    </span>  
+                    </div>  
 
                     <div class="img-content">
                         <img src="./images/cute-dog.jpeg" />
@@ -161,9 +176,9 @@
                         <img src="./images/good-doggo.jpeg" />
                     </div>
 
-                    <span class="text-content">
+                    <div class="text-content">
                         Contact content
-                    </span>  
+                    </div>  
 
                 </div>
 
