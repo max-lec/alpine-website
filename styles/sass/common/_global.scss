@@ -32,6 +32,18 @@ img {
 
 %section_wrapper {
   display: flex;
-  flex-direction: column;
-  padding: 5vw 10vw;
+
+  @include phone {
+    padding: 5vw 5vw;
+  }
+
+
+  @include tablet {
+    padding: 5vw 8vw;
+  }
+
+
+  @include desktop {
+    padding: 5vw 10vw;
+  }
 }

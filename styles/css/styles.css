@@ -1,4 +1,5 @@
 /* Themes */
+/* Variables */
 /* Resposive mixins */
 html {
   scroll-behavior: smooth;
@@ -27,28 +28,98 @@ img {
 
 #who .who-wrapper, #what .what-wrapper, #where .where-wrapper, #home .home-wrapper {
   display: flex;
-  flex-direction: column;
-  padding: 5vw 10vw;
+}
+@media (max-width: 767px) {
+  #who .who-wrapper, #what .what-wrapper, #where .where-wrapper, #home .home-wrapper {
+    padding: 5vw 5vw;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #who .who-wrapper, #what .what-wrapper, #where .where-wrapper, #home .home-wrapper {
+    padding: 5vw 8vw;
+  }
+}
+@media (min-width: 1024px) {
+  #who .who-wrapper, #what .what-wrapper, #where .where-wrapper, #home .home-wrapper {
+    padding: 5vw 10vw;
+  }
 }
 
-#home .home-wrapper .title-wrapper {
-  padding-bottom: 20px;
+#home .home-wrapper .img-content {
+  padding: 2vw 3vw;
+  flex: 0.45;
 }
-#home .home-wrapper .title-wrapper span {
-  font-size: 2rem;
-}
-#home .home-wrapper .content-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-#home .home-wrapper .content-wrapper .text-content {
-  padding-bottom: 20px;
-}
-#home .home-wrapper .content-wrapper .img-content img {
+#home .home-wrapper .img-content img {
   width: 100%;
   height: auto;
 }
+#home .home-wrapper .text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2vw 3vw;
+  flex: 0.55;
+}
+#home .home-wrapper .text-wrapper .title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 20px;
+  opacity: 0.7;
+}
+#home .home-wrapper .text-wrapper .title-wrapper span {
+  text-transform: uppercase;
+}
+#home .home-wrapper .text-wrapper .title-wrapper::before {
+  height: 2px;
+  width: 10%;
+  display: inline-block;
+  content: "";
+  background: #072849;
+  margin-right: 20px;
+}
+#home .home-wrapper .text-wrapper .text-content {
+  padding-bottom: 20px;
+}
+#home .home-wrapper .text-wrapper .text-content .quote {
+  margin: 0;
+  padding-bottom: 40px;
+}
 
+/* Responsive parts */
+@media (max-width: 767px) {
+  .home-wrapper {
+    flex-direction: column-reverse;
+  }
+  .home-wrapper .text-wrapper .title-wrapper span {
+    font-size: 1.5rem;
+  }
+  .home-wrapper .text-wrapper .text-content .quote {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home-wrapper {
+    flex-direction: row;
+  }
+  .home-wrapper .text-wrapper .title-wrapper span {
+    font-size: 1.7rem;
+  }
+  .home-wrapper .text-wrapper .text-content .quote {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .home-wrapper {
+    flex-direction: row;
+  }
+  .home-wrapper .text-wrapper .title-wrapper span {
+    font-size: 2rem;
+  }
+  .home-wrapper .text-wrapper .text-content .quote {
+    font-size: 3rem;
+  }
+}
 .header {
   width: 100%;
   height: 100%;
@@ -113,7 +184,7 @@ img {
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .header .title-wrapper span {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .header .nav-wrapper {
     flex-direction: row;
@@ -124,7 +195,7 @@ img {
 }
 @media (min-width: 1024px) {
   .header .title-wrapper span {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .header .nav-wrapper {
     flex-direction: row;
