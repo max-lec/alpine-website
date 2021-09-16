@@ -12,13 +12,38 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  &::-webkit-scrollbar {
+    width: $scollbar-size;
+  }
+  &::-webkit-scrollbar-track {
+    background: #1e1e24;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #a0a0a0;
+  }
 }
 
-img {
-    max-width: 80vw;
-    height: auto;
+
+/* Responsive mixins */
+
+
+@mixin phone {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
 }
 
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
 
 
 /* Re-usable extensions */ 
@@ -34,16 +59,19 @@ img {
   display: flex;
 
   @include phone {
-    padding: 5vw 5vw;
+    padding: 5vw calc(#{$gutter-width-phone} - #{$scollbar-size}) 5vw $gutter-width-phone;
+    width: calc(100vw - #{$gutter-width-phone*2} - #{$scollbar-size});
   }
 
 
   @include tablet {
-    padding: 5vw 8vw;
+    padding: 5vw calc(#{$gutter-width-tablet} - #{$scollbar-size}) 5vw $gutter-width-tablet;
+    width: calc(100vw - #{$gutter-width-tablet*2} - #{$scollbar-size});
   }
 
 
   @include desktop {
-    padding: 5vw 10vw;
+    padding: 5vw calc(#{$gutter-width-desktop} - #{$scollbar-size}) 5vw $gutter-width-desktop;
+    width: calc(100vw - #{$gutter-width-desktop*2} - #{$scollbar-size});
   }
 }

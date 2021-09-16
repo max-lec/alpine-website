@@ -2,6 +2,7 @@
 
   .what-wrapper {
     @extend %section_wrapper;
+    flex-direction: column;
 
     .title-wrapper {
       padding-bottom: 20px;
@@ -15,20 +16,120 @@
     .content-wrapper {
       display: flex;
       flex-direction: column;
+      position: relative;
 
-      .text-content {
-        padding-bottom: 20px;
+      .carousel-wrapper {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        align-items: center;
+        height: 60vh;
+        overflow-x: hidden;
+
+        .carousel-content {
+          display: flex;
+          flex-direction: row;
+          position: absolute;
+          align-items: center;
+          height: 60vh;
+          top: 0;
+          left: 0;
+
+          transition: left 300ms ease-out;
+
+          .item-wrapper {
+
+            .img-wrapper {
+
+              img {
+                height: 60vh;
+                object-fit: contain;
+                display: block;
+
+                user-drag: none;
+                -webkit-user-drag: none;
+                user-select: none;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+              }
+            }
+          }
+        }
+
+        
       }
 
-      .img-content {
+      %carousel-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 50%;
+        background-color: rgba(180, 180, 180, 0.4);
+        border-radius: 50%;
+        z-index: 1;
+        cursor: pointer;
 
-        img {
-          width: 100%;
-          height: auto;
+        &:hover {
+          background-color: rgba(180, 180, 180, 0.8);
         }
+      }
+
+      .carousel-button-right {
+        @extend %carousel-button;
+        right: -5vw;
+      }
+      .carousel-button-left {
+        @extend %carousel-button;
+        left: -5vw;
       }
     }
 
   }
 
+}
+
+
+/* Responsive parts */
+
+
+@include phone {
+  #what {
+    .carousel-content {
+      .img-wrapper {
+        img {
+          width: 100vw - ($gutter-width-phone*2);
+        }
+      }
+    }
+  }
+}
+
+
+@include tablet {
+  #what {
+    .carousel-content {
+      .img-wrapper {
+        img {
+          width: 100vw - ($gutter-width-tablet*2);
+        }
+      }
+    }
+  }
+}
+
+
+@include desktop {
+  #what {
+    .carousel-content {
+      .img-wrapper {
+        img {
+          width: 100vw - ($gutter-width-desktop*2);
+        }
+      }
+    }
+  }
 }
