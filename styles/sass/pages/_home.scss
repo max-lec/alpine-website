@@ -4,7 +4,7 @@
     @extend %section_wrapper;
 
     .img-content {
-      padding: 2vw 3vw;
+      padding: $content-padding;
       flex: 0.45;
 
       img {
@@ -18,7 +18,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 2vw 3vw;
+      padding: $content-padding;
       flex: 0.55;
 
       .title-wrapper {
@@ -33,12 +33,7 @@
         }
   
         &::before {
-          height: 2px;
-          width: 10%;
-          display: inline-block;
-          content: "";
-          background: $theme-text;
-          margin-right: 20px;
+          @extend %title-before-decoration;
         }
       }
   

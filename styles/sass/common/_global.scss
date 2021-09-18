@@ -55,6 +55,15 @@ body {
   }
 }
 
+%title-before-decoration {
+  height: 2px;
+  width: $title-before-width;
+  display: inline-block;
+  content: "";
+  background: $theme-text;
+  margin-right: 20px;
+}
+
 %section_wrapper {
   display: flex;
 

@@ -31,6 +31,15 @@ body::-webkit-scrollbar-thumb {
   color: #072849;
 }
 
+#who .who-wrapper .title-wrapper::before, #home .home-wrapper .text-wrapper .title-wrapper::before {
+  height: 2px;
+  width: 3rem;
+  display: inline-block;
+  content: "";
+  background: #072849;
+  margin-right: 20px;
+}
+
 #who .who-wrapper, #what .what-wrapper, #where .where-wrapper, #home .home-wrapper {
   display: flex;
 }
@@ -77,14 +86,6 @@ body::-webkit-scrollbar-thumb {
 }
 #home .home-wrapper .text-wrapper .title-wrapper span {
   text-transform: uppercase;
-}
-#home .home-wrapper .text-wrapper .title-wrapper::before {
-  height: 2px;
-  width: 10%;
-  display: inline-block;
-  content: "";
-  background: #072849;
-  margin-right: 20px;
 }
 #home .home-wrapper .text-wrapper .text-content {
   padding-bottom: 20px;
@@ -244,23 +245,20 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   position: relative;
 }
-#what .what-wrapper .content-wrapper .text-content {
-  padding-bottom: 20px;
-}
 #what .what-wrapper .content-wrapper .carousel-wrapper {
   display: flex;
   flex-direction: row;
+  position: relative;
   align-items: center;
   height: 60vh;
   overflow-x: hidden;
-  position: relative;
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .carousel-content {
   display: flex;
   flex-direction: row;
-  height: 60vh;
-  align-items: center;
   position: absolute;
+  align-items: center;
+  height: 60vh;
   top: 0;
   left: 0;
   transition: left 300ms ease-out;
@@ -277,17 +275,17 @@ body::-webkit-scrollbar-thumb {
   -ms-user-select: none;
 }
 #what .what-wrapper .content-wrapper .carousel-button-left, #what .what-wrapper .content-wrapper .carousel-button-right {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-  cursor: pointer;
-  background-color: rgba(180, 180, 180, 0.4);
-  width: 50px;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  background-color: rgba(180, 180, 180, 0.4);
   border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
 }
 #what .what-wrapper .content-wrapper .carousel-button-left:hover, #what .what-wrapper .content-wrapper .carousel-button-right:hover {
   background-color: rgba(180, 180, 180, 0.8);
@@ -315,22 +313,92 @@ body::-webkit-scrollbar-thumb {
     width: 80vw;
   }
 }
+#who .who-wrapper {
+  flex-direction: column;
+}
 #who .who-wrapper .title-wrapper {
-  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2vw 3vw;
+  opacity: 0.7;
 }
 #who .who-wrapper .title-wrapper span {
-  font-size: 2rem;
+  text-transform: uppercase;
 }
 #who .who-wrapper .content-wrapper {
   display: flex;
-  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+  margin: 2vw 3vw;
+  box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.3);
 }
 #who .who-wrapper .content-wrapper .text-content {
-  padding-bottom: 20px;
+  padding: 2vw 3vw;
+  flex: 1;
+}
+#who .who-wrapper .content-wrapper .text-content .quote {
+  padding: 20px 0;
+  margin: 0;
+}
+#who .who-wrapper .content-wrapper .spacing-bar {
+  background: #072849;
+}
+#who .who-wrapper .content-wrapper .img-content {
+  padding: 2vw 3vw;
+  flex: 1;
 }
 #who .who-wrapper .content-wrapper .img-content img {
-  width: 50vw;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive parts */
+@media (max-width: 767px) {
+  .who-wrapper .title-wrapper span {
+    font-size: 1.5rem;
+  }
+  .who-wrapper .content-wrapper {
+    flex-direction: column;
+  }
+  .who-wrapper .content-wrapper .text-content .quote {
+    font-size: 1.5rem;
+  }
+  .who-wrapper .content-wrapper .spacing-bar {
+    margin: 5px 45px;
+    height: 2px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .who-wrapper .title-wrapper span {
+    font-size: 1.7rem;
+  }
+  .who-wrapper .content-wrapper {
+    flex-direction: row;
+  }
+  .who-wrapper .content-wrapper .text-content .quote {
+    font-size: 1.7rem;
+  }
+  .who-wrapper .content-wrapper .spacing-bar {
+    margin: 45px 5px;
+    width: 2px;
+  }
+}
+@media (min-width: 1024px) {
+  .who-wrapper .title-wrapper span {
+    font-size: 2rem;
+  }
+  .who-wrapper .content-wrapper {
+    flex-direction: row;
+  }
+  .who-wrapper .content-wrapper .text-content .quote {
+    font-size: 2rem;
+  }
+  .who-wrapper .content-wrapper .spacing-bar {
+    margin: 45px 5px;
+    width: 2px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
