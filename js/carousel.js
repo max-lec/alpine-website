@@ -14,6 +14,9 @@ function carousel() {
             { id: 1, img_src: './images/cute-dog.jpeg' },
             { id: 2, img_src: './images/cool-dog.jpeg' },
             { id: 3, img_src: './images/smiling-dog.jpeg' },
+            { id: 4, img_src: './images/cute-dog.jpeg' },
+            { id: 5, img_src: './images/cool-dog.jpeg' },
+            { id: 6, img_src: './images/smiling-dog.jpeg' },
         ],
 
         current_item: 1,
@@ -23,7 +26,6 @@ function carousel() {
         },
         
         carousel_next(){
-            console.log(this.current_item < this.items.length)
             return this.current_item < this.items.length;
         },
         
