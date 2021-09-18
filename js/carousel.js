@@ -2,7 +2,7 @@
 
 // maps a pixel value to viewport
 function getVw() {
-    const currWidth = document.querySelector('.carousel-content .img-wrapper').offsetWidth;
+    const currWidth = document.querySelector('.carousel-content .item-wrapper').offsetWidth;
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     return Math.round((currWidth / w) * 100);
 }
@@ -40,4 +40,25 @@ function carousel() {
         },
     };
 
+}
+
+var rotated = false;
+
+// rotates the image for phone users
+function rotate(){
+
+    const button = document.querySelector('.carousel-button-top');
+    const images = document.querySelectorAll('.carousel-content .item-wrapper img');
+
+    if(rotated) {
+        // reset
+        Array.prototype.map.call(images, (image) => image.classList.remove("rotated-image"));
+        rotated = false;
+        button.setAttribute("style", "transform: translate(-50%, 0) scaleX(1) ");
+    } else {
+        // rotate
+        Array.prototype.map.call(images, (image) => image.classList.add("rotated-image"));
+        rotated = true;
+        button.setAttribute("style", "transform: translate(-50%, 0) scaleX(-1) ");
+    }
 }

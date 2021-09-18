@@ -7,7 +7,7 @@
     flex-direction: column;
 
     .title-wrapper {
-      padding-bottom: 20px;
+      padding-bottom: 40px;
 
       span {
         font-size: 2rem;
@@ -40,20 +40,26 @@
           transition: left 300ms ease-out;
 
           .item-wrapper {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             .img-wrapper {
+              height: 90%;
+              width: 90%;
+              background-color: $theme-bg-popup;
+              box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 
               img {
-                height: 60vh;
+                height: 100%;
+                width: 100%;
                 object-fit: contain;
                 display: block;
 
-                user-drag: none;
-                -webkit-user-drag: none;
-                user-select: none;
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
+                transition: transform 200ms;
+
+                @extend %no-select;
               }
             }
           }
@@ -74,6 +80,7 @@
         background-color: rgba(180, 180, 180, 0.5);
         z-index: 1;
         cursor: pointer;
+        @extend %no-select;
 
         &:hover {
           background-color: rgba(180, 180, 180, 0.8);
@@ -88,6 +95,14 @@
         @extend %carousel-button;
         left: -5vw;
       }
+      .carousel-button-top {
+        @extend %carousel-button;
+        top: -7vw;
+        left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 50%;
+        display: none; // only display for phones
+      }
     }
 
   }
@@ -95,15 +110,31 @@
 }
 
 
+
 /* Responsive parts */
 
 
 @include phone {
   #what {
-    .carousel-content {
-      .img-wrapper {
-        img {
-          width: 100vw - ($gutter-width-phone*2);
+    .content-wrapper{
+
+      .carousel-button-top {
+        display: flex !important;
+      }
+
+      .carousel-content {
+        .item-wrapper {
+          
+            width: 100vw - ($gutter-width-phone*2);
+            $tmp-width: 100vw - ($gutter-width-phone*2);
+  
+            // rotation for phones
+            .rotated-image {
+              transform: rotate(90deg) translate(0, -100%);
+              transform-origin: top left;
+              width: calc(60vh * 90 / 100) !important;
+              height: calc(#{$tmp-width} * 90 / 100) !important;
+            }
         }
       }
     }
@@ -114,10 +145,10 @@
 @include tablet {
   #what {
     .carousel-content {
-      .img-wrapper {
-        img {
+      .item-wrapper {
+        
           width: 100vw - ($gutter-width-tablet*2);
-        }
+        
       }
     }
   }
@@ -127,10 +158,10 @@
 @include desktop {
   #what {
     .carousel-content {
-      .img-wrapper {
-        img {
+      .item-wrapper {
+        
           width: 100vw - ($gutter-width-desktop*2);
-        }
+
       }
     }
   }

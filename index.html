@@ -130,11 +130,9 @@
             </div>
 
             <div class="content-wrapper" x-data="carousel()" >
-
-                <div class="text-content">
-                    Carousel example with projects :
-                </div>  
-
+                <div class="carousel-button-top" @click="rotate">
+                    <div>&#x21bb;</div>
+                </div>
 
                 <div class="carousel-button-left" @click="slideLeft" x-show="carousel_prev()"> <!-- left navigation -->
                     <div>&lt;</div>
