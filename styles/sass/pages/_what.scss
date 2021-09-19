@@ -1,16 +1,28 @@
 #what {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   .what-wrapper {
     @extend %section_wrapper;
     flex-direction: column;
+    // overload padding-top
+    padding-top: 2vw;
 
     .title-wrapper {
-      padding-bottom: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: $content-padding;
+      // overload padding-bottom
+      padding-bottom: 4vw;
+      opacity: 0.7;
 
       span {
-        font-size: 2rem;
+        text-transform: uppercase;
+      }
+
+      &::before {
+        @extend %title-before-decoration;
       }
 
     }
@@ -20,36 +32,44 @@
       flex-direction: column;
       position: relative;
 
+      .section-bg {
+        position: absolute;
+        height: 100%;
+        width: calc(100vw - #{$scollbar-size});
+        z-index: -1;
+        background-color: $theme-highlight;
+      }
+
       .carousel-wrapper {
         display: flex;
-        flex-direction: row;
+        flex-direction: column-reverse;
         position: relative;
         align-items: center;
-        height: 60vh;
+        height: 80vh;
         overflow-x: hidden;
+        overflow-y: hidden;
 
         .carousel-content {
           display: flex;
           flex-direction: row;
           position: absolute;
           align-items: center;
-          height: 60vh;
+          height: 80vh;
           top: 0;
           left: 0;
 
           transition: left 300ms ease-out;
 
           .item-wrapper {
-            height: 60vh;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
 
             .img-wrapper {
               height: 90%;
-              width: 90%;
+              width: 100%;
               background-color: $theme-bg-popup;
-              box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 
               img {
                 height: 100%;
@@ -62,9 +82,27 @@
                 @extend %no-select;
               }
             }
+
           }
         }
 
+        .slide-tracker-wrapper {
+          display: flex;
+          flex-direction: row;
+          height: 4vh;
+          align-items: center;
+
+          .slide-tracker-box {
+            background-color: rgba(180, 180, 180, 0.5);
+            width: 10px;
+            height: 10px;
+            margin: 0 10px;
+          }
+
+          .current-item {
+            background-color: rgba(180, 180, 180, 0.8);
+          }
+        }
         
       }
 
@@ -76,6 +114,7 @@
         width: 50px;
         height: 50px;
         top: 50%;
+        transform: translate(0, -50%);
         font-size: 1.5rem;
         background-color: rgba(180, 180, 180, 0.5);
         z-index: 1;
@@ -97,7 +136,7 @@
       }
       .carousel-button-top {
         @extend %carousel-button;
-        top: -7vw;
+        top: 40px;
         left: 50%;
         transform: translate(-50%, 0);
         border-radius: 50%;
@@ -116,7 +155,20 @@
 
 @include phone {
   #what {
+
+    .title-wrapper {
+
+      span {
+        font-size: $h2-small;
+      }
+
+    }
+
     .content-wrapper{
+
+      .section-bg {
+        left: -($gutter-width-phone);
+      }
 
       .carousel-button-top {
         display: flex !important;
@@ -132,8 +184,8 @@
             .rotated-image {
               transform: rotate(90deg) translate(0, -100%);
               transform-origin: top left;
-              width: calc(60vh * 90 / 100) !important;
-              height: calc(#{$tmp-width} * 90 / 100) !important;
+              width: calc(80vh * 90 / 100)!important;
+              height: $tmp-width !important;
             }
         }
       }
@@ -144,11 +196,26 @@
 
 @include tablet {
   #what {
-    .carousel-content {
-      .item-wrapper {
-        
-          width: 100vw - ($gutter-width-tablet*2);
-        
+
+    .title-wrapper {
+
+      span {
+        font-size: $h2-medium;
+      }
+
+    }
+    .content-wrapper{
+
+      .section-bg {
+        left: -($gutter-width-tablet);
+      }
+
+      .carousel-content {
+        .item-wrapper {
+          
+            width: 100vw - ($gutter-width-tablet*2);
+          
+        }
       }
     }
   }
@@ -157,11 +224,27 @@
 
 @include desktop {
   #what {
-    .carousel-content {
-      .item-wrapper {
-        
-          width: 100vw - ($gutter-width-desktop*2);
 
+    .title-wrapper {
+
+      span {
+        font-size: $h2-big;
+      }
+
+    }
+
+    .content-wrapper{
+
+      .section-bg {
+        left: -($gutter-width-desktop);
+      }
+
+      .carousel-content {
+        .item-wrapper {
+          
+            width: 100vw - ($gutter-width-desktop*2);
+
+        }
       }
     }
   }

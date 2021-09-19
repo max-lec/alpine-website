@@ -157,12 +157,18 @@
 
                     </div>
 
+                    <div class="slide-tracker-wrapper">
+                        <template x-for="item in items">
+                            <div :class="{'current-item' : item.id === current_item }" class="slide-tracker-box"></div>
+                        </template>
+                    </div>
                 </div>
                     
                 <div class="carousel-button-right" @click="slideRight" x-show="carousel_next()"><!-- right navigation -->
                     <div>&gt;</div>
                 </div>
 
+                <div class="section-bg"></div>
             </div>
 
         </div>
