@@ -5,6 +5,7 @@
   .who-wrapper {
     @extend %section_wrapper;
     flex-direction: column;
+    height: calc(100% - 10vw);
 
     .title-wrapper {
       display: flex;
@@ -114,7 +115,7 @@
 
 
     .content-wrapper{
-      flex-direction: row;
+      flex-direction: column;
 
       .text-content {
 
@@ -124,8 +125,8 @@
       }
 
       .spacing-bar {
-        margin: 45px 5px;
-        width: 4px;
+        margin: 5px 45px;
+        height: 4px;
       }
     }
     

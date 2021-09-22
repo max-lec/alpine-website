@@ -3,8 +3,6 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
-  background-color: $theme-bg;
-  color: $theme-text;
 }
 
 body {
@@ -12,6 +10,8 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
+  background-color: $theme-bg;
+  color: $theme-text;
   &::-webkit-scrollbar {
     width: $scollbar-size;
   }
@@ -93,3 +93,4 @@ body {
     width: calc(100vw - #{$gutter-width-desktop*2} - #{$scollbar-size});
   }
 }
+

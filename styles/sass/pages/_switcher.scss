@@ -1,0 +1,42 @@
+
+.theme-switcher {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .switch-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 160px;
+    height: 50px;
+    cursor: pointer;
+    background-color: $theme-bg-popup;
+    box-shadow: 0px 0px 5px rgba($theme-highlight-RGB, 10%);
+    margin-left: 10px;
+
+    .item-color {
+      width: 50px;
+      height: 50px;
+    }
+    .item-text {
+      display: flex;
+      flex:1;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 10px;
+    }
+  }
+}
+
+
+@include phone(){
+  .theme-switcher {
+    flex-direction: column;
+
+    .switch-item {
+      margin-top: 10px;
+    }
+  }
+}

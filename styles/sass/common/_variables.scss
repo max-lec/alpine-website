@@ -2,18 +2,37 @@
 
 
 /* Themes */
+.theme-light {
+  --theme-text: #072849;
+  --theme-bg: #f7f7e9;
+  --theme-bg-popup: #fafaf5;
+  --theme-highlight: #034d5e;
+  --theme-highlight-RGB: 3, 77, 94;
+}
 
-// work theme :
-$theme-text: #072849;
-$theme-bg: #fafaf0;
-$theme-bg-popup: #fafaf5;
-$theme-highlight: #034d5e;
+.theme-dark {
+  --theme-text: #f7f7e9;
+  --theme-bg: #072849;
+  --theme-bg-popup: #034d5e;
+  --theme-highlight: #fafaf5;
+  --theme-highlight-RGB: 250, 250, 245;
+}
 
-// olivia theme :
-// $theme-text: #2b2b2b;
-// $theme-bg: #e1dbd1;
-// $theme-highlight: #f1beb0;
+.theme-olivia {
+  --theme-text: #f1beb0;
+  --theme-bg: #2b2b2b;
+  --theme-bg-popup: #303030;
+  --theme-highlight: #f1beb0;
+  --theme-highlight-RGB: 241, 190, 176;
+}
 
+
+// theme abstraction :
+$theme-text: var(--theme-text);
+$theme-bg: var(--theme-bg);
+$theme-bg-popup: var(--theme-bg-popup);
+$theme-highlight: var(--theme-highlight);
+$theme-highlight-RGB: var(--theme-highlight-RGB);
 
 
 /* Variables */
@@ -40,8 +59,8 @@ $content-padding: $content-padding-h $content-padding-w;
 
 /* Resposive vars */
 
-$tablet-width: 768px;
-$desktop-width: 1024px;
+$tablet-width: 769px;
+$desktop-width: 1025px;
 
 $gutter-width-phone: 5vw;
 $gutter-width-tablet: 8vw;

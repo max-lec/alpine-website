@@ -37,7 +37,7 @@
         height: 100%;
         width: calc(100vw - #{$scollbar-size});
         z-index: -1;
-        background-color: $theme-highlight;
+        background-color: $theme-bg-popup;
       }
 
       .carousel-wrapper {

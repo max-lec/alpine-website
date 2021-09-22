@@ -88,8 +88,8 @@
 
 @include tablet {
   .home-wrapper {
-    flex-direction: row;
-
+    flex-direction: column-reverse;
+    
     .text-wrapper {
 
       .title-wrapper {

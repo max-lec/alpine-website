@@ -5,6 +5,7 @@
     <script defer src="./lib/alpine.3.x.x.min.js"></script>
     <script src="./js/init.js"></script>
     <script src="./js/carousel.js"></script>
+    <script src="./js/theme-switcher.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -23,7 +24,7 @@
 </head>
 
 
-<body>
+<body class="theme-light">
 
     <!-- Main header-->
     <div class="header">
@@ -185,21 +186,41 @@
 
             <div class="content-wrapper">
 
-                <div class="content">
+                <div class="img-content">
+                    <img src="./images/good-doggo.jpeg" />
+                </div>
 
-                    <div class="img-content">
-                        <img src="./images/good-doggo.jpeg" />
-                    </div>
+                <div class="cards-wrapper">
+                    
+                    <a class="card" href="https://www.linkedin.com/in/maxime-lec" target="_blank">
+                        <img class="icon" src="./images/linkedin.jpeg"/>
+                        <div class="icon-label"><span>Find me on LinkedIn.</span></div>
+                    </a>
 
-                    <div class="text-content">
-                        Contact content
-                    </div>  
+                    <a class="card" href="https://github.com/max-lec/alpine-website" target="_blank">
+                        <img class="icon" src="./images/github.png"/>
+                        <div class="icon-label"><span>Find me on GitHub.</span></div>
+                    </a>
+
+                    <a class="card" href="mailto: test@email.com">
+                        <img class="icon" src="./images/Email-Icon.jpg"/>
+                        <div class="icon-label"><span>Or send me an email !</span></div>
+                    </a>
 
                 </div>
 
             </div>
 
         </div>
+    </div>
+
+    <div class="theme-switcher" x-data="theme_switcher()">
+        <template x-for="item in items">
+            <div class="switch-item" @click="switch_theme(item.theme)">
+                <div class="item-color" x-bind:style="`background-color: ${item.color}`"></div>
+                <div class="item-text" x-text="item.theme"></div>
+            </div>
+        </template>
     </div>
 
 </body>
