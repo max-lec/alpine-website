@@ -5,14 +5,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="images/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="res/favicon/browserconfig.xml">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="images/favicon/site.webmanifest">
-    <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="res/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="res/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="res/favicon/favicon-16x16.png">
+    <link rel="manifest" href="res/favicon/site.webmanifest">
+    <link rel="mask-icon" href="res/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="res/favicon/favicon.ico">
 
     <!-- alpine min local lib -->
     <script defer src="./lib/alpine.3.x.x.min.js"></script>
@@ -75,7 +75,20 @@
         <div class="home-wrapper">
 
             <div class="img-content">
-                <img src="./images/cool-dog.jpeg" />
+                <!-- responsive images example (fixme: can't check if it works on local browser for some reason) -->
+                <img 
+                    srcset="./res/images/small/cool-dog-small.webp 224w,
+                            ./res/images/medium/cool-dog-medium.webp 447w,
+                            ./res/images/large/cool-dog.webp 893w"
+                    sizes=" 
+                            (max-width: 544px) 300px,
+                            (min-width: 545px) and (max-width: 768px) 400px,
+                            (min-width: 769px) and (max-width: 1025px) 800px,
+                            (min-width: 1026px) and (max-width: 1620px) 500px,
+                            800px"
+                    src="./res/images/large/cool-dog.webp" 
+                    alt="Image of a cool dog"
+                />
             </div>
 
             <div class="text-wrapper">
@@ -120,7 +133,7 @@
                     <div class="spacing-bar"></div>
 
                     <div class="img-content">
-                        <img src="./images/smiling-dog.jpeg" />
+                        <img src="./res/images/large/smiling-dog.webp" />
                     </div>
 
                 </div>
@@ -205,23 +218,23 @@
             <div class="content-wrapper">
 
                 <div class="img-content">
-                    <img src="./images/good-doggo.jpeg" />
+                    <img src="./res/images/large/good-doggo.webp" />
                 </div>
 
                 <div class="cards-wrapper">
                     
                     <a class="card" href="https://www.linkedin.com/in/maxime-lec" target="_blank">
-                        <img class="icon" src="./images/linkedin.jpeg"/>
+                        <img class="icon" src="./res/icons/linkedin.jpg"/>
                         <div class="icon-label"><span>Find me on LinkedIn.</span></div> <!-- encapsulate text in span to help justify paragraph -->
                     </a>
 
                     <a class="card" href="https://github.com/max-lec/alpine-website" target="_blank">
-                        <img class="icon" src="./images/github.png"/>
+                        <img class="icon" src="./res/icons/github.png"/>
                         <div class="icon-label"><span>Find me on GitHub.</span></div>
                     </a>
 
                     <a class="card" href="mailto: test@email.com">
-                        <img class="icon" src="./images/Email-Icon.jpg"/>
+                        <img class="icon" src="./res/icons/email-icon.jpg"/>
                         <div class="icon-label"><span>Or send me an email !</span></div>
                     </a>
 
