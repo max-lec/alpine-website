@@ -4,7 +4,6 @@
   .home-wrapper {
 
     @include section_wrapper {
-      flex-direction: row;
 
       .img-content {
         flex: 0.45;
@@ -48,7 +47,7 @@
 
 @include phone {
   .home-wrapper {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important; /* important is needed to override global rule */
     
     .text-wrapper {
 
@@ -65,7 +64,7 @@
 
 @include tablet {
   .home-wrapper {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important;
     
     .text-wrapper {
 
@@ -82,7 +81,7 @@
 
 @include desktop {
   .home-wrapper {
-    flex-direction: row;
+    flex-direction: row !important;
 
     .text-wrapper {
 

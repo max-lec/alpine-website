@@ -82,6 +82,7 @@ body::-webkit-scrollbar-thumb {
 /* Group common code with mixins here */
 #home .home-wrapper {
   display: flex;
+  flex-direction: column;
 }
 #home .home-wrapper .title-wrapper {
   display: flex;
@@ -94,19 +95,19 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
 }
 #home .home-wrapper .img-content {
-  padding: 2vw 3vw;
   flex: 0.45;
+  padding: 2vw 3vw;
 }
 #home .home-wrapper .img-content img {
   width: 100%;
   height: auto;
 }
 #home .home-wrapper .text-wrapper {
+  flex: 0.55;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 2vw 3vw;
-  flex: 0.55;
 }
 #home .home-wrapper .text-wrapper .title-wrapper {
   padding: 0;
@@ -147,10 +148,11 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* Responsive parts */
+/* Section specific responsive parts */
 @media (max-width: 768px) {
   .home-wrapper {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important;
+    /* important is needed to override global rule */
   }
   .home-wrapper .text-wrapper .text-content .quote {
     font-size: 2rem;
@@ -158,7 +160,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .home-wrapper {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important;
   }
   .home-wrapper .text-wrapper .text-content .quote {
     font-size: 2.5rem;
@@ -166,7 +168,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media (min-width: 1025px) {
   .home-wrapper {
-    flex-direction: row;
+    flex-direction: row !important;
   }
   .home-wrapper .text-wrapper .text-content .quote {
     font-size: 3rem;
@@ -284,18 +286,18 @@ body::-webkit-scrollbar-thumb {
   object-fit: cover;
 }
 #where .where-wrapper .content-wrapper .cards-wrapper {
+  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 2vw 3vw;
-  flex: 1;
 }
 #where .where-wrapper .content-wrapper .cards-wrapper .card {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100%;
   background-color: var(--theme-bg-popup);
   box-shadow: 0px 0px 5px rgba(var(--theme-highlight-RGB), 10%);
-  align-items: center;
 }
 #where .where-wrapper .content-wrapper .cards-wrapper .card:not(:first-child) {
   margin-top: 5%;
@@ -343,6 +345,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+/* Section specific responsive parts */
 @media (max-width: 768px) {
   .where-wrapper .content-wrapper {
     flex-direction: column;
@@ -419,29 +422,31 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--theme-bg-popup);
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper {
+  /* hide child overflow */
   display: flex;
   flex-direction: column-reverse;
-  position: relative;
   align-items: center;
+  position: relative;
   height: 80vh;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .carousel-content {
+  /* slide underneath with 'left' property */
   display: flex;
   flex-direction: row;
-  position: absolute;
   align-items: center;
+  position: absolute;
   height: 80vh;
   top: 0;
   left: 0;
   transition: left 300ms ease-out;
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .carousel-content .item-wrapper {
-  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 80vh;
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .carousel-content .item-wrapper .img-wrapper {
   height: 90%;
@@ -449,23 +454,25 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--theme-bg-popup);
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .carousel-content .item-wrapper .img-wrapper img {
+  /* is annoying when you missclick and drag image */
   height: 100%;
   width: 100%;
   object-fit: contain;
   display: block;
   transition: transform 200ms;
+  /* animate the rotation */
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .slide-tracker-wrapper {
   display: flex;
   flex-direction: row;
-  height: 4vh;
   align-items: center;
+  height: 4vh;
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .slide-tracker-wrapper .slide-tracker-box {
-  background-color: rgba(180, 180, 180, 0.5);
   width: 10px;
   height: 10px;
   margin: 0 10px;
+  background-color: rgba(180, 180, 180, 0.5);
 }
 #what .what-wrapper .content-wrapper .carousel-wrapper .slide-tracker-wrapper .current-item {
   background-color: rgba(180, 180, 180, 0.8);
@@ -478,11 +485,11 @@ body::-webkit-scrollbar-thumb {
   width: 50px;
   height: 50px;
   top: 50%;
-  transform: translate(0, -50%);
   font-size: 1.5rem;
-  background-color: rgba(180, 180, 180, 0.5);
   z-index: 1;
   cursor: pointer;
+  transform: translate(0, -50%);
+  background-color: rgba(180, 180, 180, 0.5);
 }
 #what .what-wrapper .content-wrapper .carousel-button-top:hover, #what .what-wrapper .content-wrapper .carousel-button-left:hover, #what .what-wrapper .content-wrapper .carousel-button-right:hover {
   background-color: rgba(180, 180, 180, 0.8);
@@ -499,6 +506,7 @@ body::-webkit-scrollbar-thumb {
   transform: translate(-50%, 0);
   border-radius: 50%;
   display: none;
+  /* only display for phones */
 }
 @media (max-width: 768px) {
   #what .what-wrapper {
@@ -528,7 +536,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* Responsive parts */
+/* Section specific responsive parts */
 @media (max-width: 768px) {
   #what .content-wrapper .section-bg {
     left: -5vw;
@@ -540,6 +548,7 @@ body::-webkit-scrollbar-thumb {
     width: 90vw;
   }
   #what .content-wrapper .carousel-content .item-wrapper .rotated-image {
+    /* rotation for phones */
     transform: rotate(90deg) translate(0, -100%);
     transform-origin: top left;
     width: calc(80vh * 90 / 100) !important;
@@ -633,7 +642,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* Responsive parts */
+/* Section specific responsive parts */
 @media (max-width: 768px) {
   .who-wrapper .content-wrapper {
     flex-direction: column;
