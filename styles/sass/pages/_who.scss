@@ -1,86 +1,55 @@
 #who {
-  width: 100%;
-  min-height: 100%;
+  @extend %cover-screen;
 
   .who-wrapper {
-    @extend %section_wrapper;
-    flex-direction: column;
-    height: calc(100% - 10vw);
 
-    .title-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: $content-padding;
-      opacity: 0.7;
+    @include section_wrapper {
+      height: calc(100% - 10vw);
 
-      span {
-        text-transform: uppercase;
-      }
+      .content-wrapper {
+        display: flex;
+        align-items: stretch;
+        height: 100%;
+        margin: $content-padding;
+        background-color: $theme-bg-popup;
+        box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.2);
 
-      &::before {
-        @extend %title-before-decoration;
-      }
-    }
+        .text-content {
+          padding: $content-padding;
+          flex: 1;
 
-    .content-wrapper {
-      display: flex;
-      align-items: stretch;
-      height: 100%;
-      margin: $content-padding;
-
-      background-color: $theme-bg-popup;
-      box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.2);
-
-      .text-content {
-        padding: $content-padding;
-        flex: 1;
-
-        .quote {
-          padding: 20px 0;
-          margin: 0;
+          .quote {
+            padding: 20px 0;
+            margin: 0;
+          }
         }
 
-      }
+        .spacing-bar {
+          background: $theme-highlight;
+        }
 
-      .spacing-bar {
-        background: $theme-highlight;
-      }
+        .img-content {
+          padding: $content-padding;
+          flex: 1;
 
-      .img-content {
-        padding: $content-padding;
-        flex: 1;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
       }
-      
     }
-
   }
-
 }
 
 
 
-/* Responsive parts */
+/* Section specific responsive parts */
 
 
 @include phone {
   .who-wrapper {
-  
-
-    .title-wrapper {
-
-      span {
-        font-size: $h2-small;
-      }
-
-    }
-
 
     .content-wrapper{
       flex-direction: column;
@@ -97,22 +66,12 @@
         height: 4px;
       }
     }
-
   }
 }
 
 
 @include tablet {
   .who-wrapper {
-
-    .title-wrapper {
-
-      span {
-        font-size: $h2-medium;
-      }
-
-    }
-
 
     .content-wrapper{
       flex-direction: column;
@@ -128,23 +87,13 @@
         margin: 5px 45px;
         height: 4px;
       }
-    }
-    
+    } 
   }
 }
 
 
 @include desktop {
   .who-wrapper {
-
-
-    .title-wrapper {
-
-      span {
-        font-size: $h2-big;
-      }
-
-    }
 
     .content-wrapper{
       flex-direction: row;
@@ -161,6 +110,5 @@
         width: 4px;
       }
     }
-    
   }
 }

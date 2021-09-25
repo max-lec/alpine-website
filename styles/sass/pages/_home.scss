@@ -1,64 +1,49 @@
 #home {
-
-  width: 100%;
-  min-height: 100%;
+  @extend %cover-screen;
   
   .home-wrapper {
-    @extend %section_wrapper;
 
-    .img-content {
-      padding: $content-padding;
-      flex: 0.45;
+    @include section_wrapper {
+      flex-direction: row;
 
-      img {
-        width: 100%;
-        height: auto;
+      .img-content {
+        flex: 0.45;
+        padding: $content-padding;
+  
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
-      
-    }
-
-    .text-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: $content-padding;
-      flex: 0.55;
-
-      .title-wrapper {
+  
+      .text-wrapper {
+        flex: 0.55;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding-bottom: 20px;
-        opacity: 0.7;
-  
-        span {
-          text-transform: uppercase;
+        flex-direction: column;
+        justify-content: center;
+        padding: $content-padding;
+    
+        .title-wrapper {
+          padding: 0;
+          padding-bottom: 20px;
         }
+
+        .text-content {
+          padding-bottom: 20px;
   
-        &::before {
-          @extend %title-before-decoration;
+          .quote {
+            margin: 0;
+            padding-bottom: 40px;
+          }
         }
       }
-  
-      .text-content {
-        padding-bottom: 20px;
-
-        .quote {
-          margin: 0;
-          padding-bottom: 40px;
-        }
-      }
-
     }
-
   }
-
 }
 
 
 
-
-/* Responsive parts */
+/* Section specific responsive parts */
 
 
 @include phone {
@@ -66,14 +51,6 @@
     flex-direction: column-reverse;
     
     .text-wrapper {
-
-      .title-wrapper {
-
-        span {
-          font-size: $h2-small;
-        }
-
-      }
 
       .text-content {
 
@@ -92,14 +69,6 @@
     
     .text-wrapper {
 
-      .title-wrapper {
-
-        span {
-          font-size: $h2-medium;
-        }
-
-      }
-
       .text-content {
 
         .quote {
@@ -116,14 +85,6 @@
     flex-direction: row;
 
     .text-wrapper {
-
-      .title-wrapper {
-
-        span {
-          font-size: $h2-big;
-        }
-
-      }
 
       .text-content {
 

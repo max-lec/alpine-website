@@ -1,9 +1,11 @@
+/* Global page elements*/
 
 
 html {
   scroll-behavior: smooth;
   width: 100%;
 }
+
 
 body {
   margin: 0;
@@ -12,6 +14,7 @@ body {
   width: 100%;
   background-color: $theme-bg;
   color: $theme-text;
+
   &::-webkit-scrollbar {
     width: $scollbar-size;
   }
@@ -24,8 +27,8 @@ body {
 }
 
 
-/* Responsive mixins */
 
+/* Responsive mixins */
 
 @mixin phone {
   @media (max-width: #{$tablet-width - 1px}) {
@@ -33,11 +36,13 @@ body {
   }
 }
 
+
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
+
 
 @mixin desktop {
   @media (min-width: #{$desktop-width}) {
@@ -46,7 +51,9 @@ body {
 }
 
 
+
 /* Re-usable extensions */ 
+
 
 %link_no_deco {
   a:link, a:visited, a:hover, a:active {
@@ -54,6 +61,7 @@ body {
     color: $theme-text;
   }
 }
+
 
 %title-before-decoration {
   height: 2px;
@@ -64,6 +72,7 @@ body {
   margin-right: 20px;
 }
 
+
 %no-select {
   user-drag: none;
   -webkit-user-drag: none;
@@ -73,24 +82,65 @@ body {
   -ms-user-select: none;
 }
 
-%section_wrapper {
+%cover-screen {
+  width: 100%;
+  min-height: 100%;
+}
+
+
+/* Group common code with mixins here */
+
+
+@mixin section_wrapper {
   display: flex;
+  flex-direction: column;
+
+  .title-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $content-padding;
+    opacity: 0.7;
+  
+    span {
+      text-transform: uppercase;
+    }
+  
+    &::before {
+      @extend %title-before-decoration;
+    }
+  }
+
+  @content;
 
   @include phone {
     padding: 5vw calc(#{$gutter-width-phone} - #{$scollbar-size}) 5vw $gutter-width-phone;
     width: calc(100vw - #{$gutter-width-phone*2} - #{$scollbar-size});
-  }
 
+    .title-wrapper {
+      span {
+        font-size: $h2-small;
+      }
+    }
+  }
 
   @include tablet {
     padding: 5vw calc(#{$gutter-width-tablet} - #{$scollbar-size}) 5vw $gutter-width-tablet;
     width: calc(100vw - #{$gutter-width-tablet*2} - #{$scollbar-size});
+    .title-wrapper {
+      span {
+        font-size: $h2-medium;
+      }
+    }
   }
-
 
   @include desktop {
     padding: 5vw calc(#{$gutter-width-desktop} - #{$scollbar-size}) 5vw $gutter-width-desktop;
     width: calc(100vw - #{$gutter-width-desktop*2} - #{$scollbar-size});
+    .title-wrapper {
+      span {
+        font-size: $h2-big;
+      }
+    }
   }
 }
-

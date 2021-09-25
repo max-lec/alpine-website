@@ -1,6 +1,5 @@
 /* Theme switcher */
 
-// carousel items
 function theme_switcher() {
     return {
 

@@ -1,168 +1,139 @@
 #what {
-  width: 100%;
-  min-height: 100%;
+  @extend %cover-screen;
 
   .what-wrapper {
-    @extend %section_wrapper;
-    flex-direction: column;
-    // overload padding-top
-    padding-top: 2vw;
 
-    .title-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: $content-padding;
-      // overload padding-bottom
-      padding-bottom: 4vw;
-      opacity: 0.7;
-
-      span {
-        text-transform: uppercase;
+    @include section_wrapper{
+      padding-top: 2vw;
+  
+      .title-wrapper {
+        padding-bottom: 4vw;
       }
-
-      &::before {
-        @extend %title-before-decoration;
-      }
-
-    }
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-
-      .section-bg {
-        position: absolute;
-        height: 100%;
-        width: calc(100vw - #{$scollbar-size});
-        z-index: -1;
-        background-color: $theme-bg-popup;
-      }
-
-      .carousel-wrapper {
+  
+      .content-wrapper {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         position: relative;
-        align-items: center;
-        height: 80vh;
-        overflow-x: hidden;
-        overflow-y: hidden;
-
-        .carousel-content {
-          display: flex;
-          flex-direction: row;
+  
+        .section-bg {
           position: absolute;
+          height: 100%;
+          width: calc(100vw - #{$scollbar-size});
+          z-index: -1;
+          background-color: $theme-bg-popup;
+        }
+  
+        .carousel-wrapper { /* hide child overflow */
+          display: flex;
+          flex-direction: column-reverse;
           align-items: center;
+          position: relative;
           height: 80vh;
-          top: 0;
-          left: 0;
-
-          transition: left 300ms ease-out;
-
-          .item-wrapper {
-            height: 80vh;
+          overflow-x: hidden;
+          overflow-y: hidden;
+  
+          .carousel-content { /* slide underneath with 'left' property */
             display: flex;
+            flex-direction: row;
             align-items: center;
-            justify-content: center;
-
-            .img-wrapper {
-              height: 90%;
-              width: 100%;
-              background-color: $theme-bg-popup;
-
-              img {
-                height: 100%;
+            position: absolute;
+            height: 80vh;
+            top: 0;
+            left: 0;
+            transition: left 300ms ease-out;
+  
+            .item-wrapper {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 80vh;
+  
+              .img-wrapper {
+                height: 90%;
                 width: 100%;
-                object-fit: contain;
-                display: block;
-
-                transition: transform 200ms;
-
-                @extend %no-select;
+                background-color: $theme-bg-popup;
+  
+                img {
+                  @extend %no-select; /* is annoying when you missclick and drag image */
+                  height: 100%;
+                  width: 100%;
+                  object-fit: contain;
+                  display: block;
+                  transition: transform 200ms; /* animate the rotation */
+                }
               }
             }
-
+          }
+  
+          .slide-tracker-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 4vh;
+  
+            .slide-tracker-box {
+              width: 10px;
+              height: 10px;
+              margin: 0 10px;
+              background-color: rgba(180, 180, 180, 0.5);
+            }
+  
+            .current-item {
+              background-color: rgba(180, 180, 180, 0.8);
+            }
           }
         }
-
-        .slide-tracker-wrapper {
+  
+        %carousel-button {
+          @extend %no-select;
           display: flex;
-          flex-direction: row;
-          height: 4vh;
           align-items: center;
-
-          .slide-tracker-box {
-            background-color: rgba(180, 180, 180, 0.5);
-            width: 10px;
-            height: 10px;
-            margin: 0 10px;
-          }
-
-          .current-item {
+          justify-content: center;
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 50%;
+          font-size: 1.5rem;
+          z-index: 1;
+          cursor: pointer;
+          transform: translate(0, -50%);
+          background-color: rgba(180, 180, 180, 0.5);
+  
+          &:hover {
             background-color: rgba(180, 180, 180, 0.8);
           }
         }
-        
-      }
+  
+        .carousel-button-right {
+          @extend %carousel-button;
+          right: -5vw;
+        }
 
-      %carousel-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        top: 50%;
-        transform: translate(0, -50%);
-        font-size: 1.5rem;
-        background-color: rgba(180, 180, 180, 0.5);
-        z-index: 1;
-        cursor: pointer;
-        @extend %no-select;
+        .carousel-button-left {
+          @extend %carousel-button;
+          left: -5vw;
+        }
 
-        &:hover {
-          background-color: rgba(180, 180, 180, 0.8);
+        .carousel-button-top {
+          @extend %carousel-button;
+          top: 40px;
+          left: 50%;
+          transform: translate(-50%, 0);
+          border-radius: 50%;
+          display: none; /* only display for phones */
         }
       }
-
-      .carousel-button-right {
-        @extend %carousel-button;
-        right: -5vw;
-      }
-      .carousel-button-left {
-        @extend %carousel-button;
-        left: -5vw;
-      }
-      .carousel-button-top {
-        @extend %carousel-button;
-        top: 40px;
-        left: 50%;
-        transform: translate(-50%, 0);
-        border-radius: 50%;
-        display: none; // only display for phones
-      }
     }
-
   }
-
 }
 
 
 
-/* Responsive parts */
+/* Section specific responsive parts */
 
 
 @include phone {
   #what {
-
-    .title-wrapper {
-
-      span {
-        font-size: $h2-small;
-      }
-
-    }
 
     .content-wrapper{
 
@@ -175,18 +146,17 @@
       }
 
       .carousel-content {
+
         .item-wrapper {
-          
-            width: 100vw - ($gutter-width-phone*2);
-            $tmp-width: 100vw - ($gutter-width-phone*2);
-  
-            // rotation for phones
-            .rotated-image {
-              transform: rotate(90deg) translate(0, -100%);
-              transform-origin: top left;
-              width: calc(80vh * 90 / 100)!important;
-              height: $tmp-width !important;
-            }
+          width: 100vw - ($gutter-width-phone*2);
+          $tmp-width: 100vw - ($gutter-width-phone*2);
+
+          .rotated-image { /* rotation for phones */
+            transform: rotate(90deg) translate(0, -100%);
+            transform-origin: top left;
+            width: calc(80vh * 90 / 100) !important;
+            height: $tmp-width !important;
+          }
         }
       }
     }
@@ -197,13 +167,6 @@
 @include tablet {
   #what {
 
-    .title-wrapper {
-
-      span {
-        font-size: $h2-medium;
-      }
-
-    }
     .content-wrapper{
 
       .section-bg {
@@ -212,9 +175,7 @@
 
       .carousel-content {
         .item-wrapper {
-          
-            width: 100vw - ($gutter-width-tablet*2);
-          
+          width: 100vw - ($gutter-width-tablet*2);
         }
       }
     }
@@ -225,14 +186,6 @@
 @include desktop {
   #what {
 
-    .title-wrapper {
-
-      span {
-        font-size: $h2-big;
-      }
-
-    }
-
     .content-wrapper{
 
       .section-bg {
@@ -241,9 +194,7 @@
 
       .carousel-content {
         .item-wrapper {
-          
-            width: 100vw - ($gutter-width-desktop*2);
-
+          width: 100vw - ($gutter-width-desktop*2);
         }
       }
     }

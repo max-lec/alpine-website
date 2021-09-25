@@ -2,10 +2,10 @@
 
 
 <head>
-    <script defer src="./lib/alpine.3.x.x.min.js"></script>
-    <script src="./js/init.js"></script>
-    <script src="./js/carousel.js"></script>
-    <script src="./js/theme-switcher.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="images/favicon/browserconfig.xml">
 
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -14,27 +14,33 @@
     <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="images/favicon/favicon.ico">
 
+    <!-- alpine min local lib -->
+    <script defer src="./lib/alpine.3.x.x.min.js"></script>
+
+    <!-- custom scripts here -->
+    <script src="./js/init.js"></script>
+    <script src="./js/carousel.js"></script>
+    <script src="./js/theme-switcher.js"></script>
+
+    <!-- compiled css here -->
     <link href="./styles/css/styles.css" rel="stylesheet">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="images/favicon/browserconfig.xml">
-
+    
+    <!-- site title (for tab in browser) -->
     <title x-data="titles" x-text="site_title"></title>
+
 </head>
 
 
 <body class="theme-light">
 
-    <!-- Main header-->
+    <!-- header section -->
     <div class="header">
         
-        <!-- Title header -->
+        <!-- titles can be changed in init.js to impact whole site at once -->
         <div class="title-wrapper" x-data="titles">
             <span x-text="site_title"></span>
         </div>
 
-        <!-- Navigation header -->
         <nav class="nav">
 
             <div class="nav-wrapper" x-data="titles">
@@ -68,7 +74,6 @@
 
         <div class="home-wrapper">
 
-
             <div class="img-content">
                 <img src="./images/cool-dog.jpeg" />
             </div>
@@ -83,15 +88,17 @@
                     <p class="quote">Welcome to my <nobr>website :)</nobr></p>
                     <p>Under here you will find a quick introduction of who I am, my resume and projects, and how to contact me.</p>
                     <p>I hope you enjoy your stay.</p>
-                </div>                
+                </div>
 
             </div>
+
         </div>
+
     </div>
 
 
 
-    <!-- who -->
+    <!-- who section -->
     <div id="who">
 
         <div class="who-wrapper">
@@ -119,9 +126,12 @@
                 </div>
 
         </div>
+
     </div>
 
-    <!-- what -->
+
+
+    <!-- what section -->
     <div id="what">
 
         <div class="what-wrapper">
@@ -131,21 +141,22 @@
             </div>
 
             <div class="content-wrapper" x-data="carousel()" >
+
+                <!-- this button only appears on small screens to help user rotate img -->
                 <div class="carousel-button-top" @click="rotate">
                     <div>&#x21bb;</div>
                 </div>
 
-                <div class="carousel-button-left" @click="slideLeft" x-show="carousel_prev()"> <!-- left navigation -->
+                <div class="carousel-button-left" @click="slideLeft" x-show="carousel_prev()"> 
                     <div>&lt;</div>
                 </div>
                 
-                <!-- We need 2 wrappers, one has overflow-x:hidden, the other slides under -->
+                <!-- We need 2 wrappers, one has overflow-x:hidden, the other is a wide row and slides under -->
                 <div class="carousel-wrapper">
 
-                    <div class="carousel-content" x-ref="carousel_content" @resize.window="slideLeft();slideRight()">
+                    <div class="carousel-content" x-ref="carousel_content" @resize.window="slideLeft();slideRight()">  <!-- on resize hack to recalibrate how far left we are -->
 
                         <template x-for="item in items">
-
                             <div class="item-wrapper">
 
                                 <div class="img-wrapper">
@@ -153,29 +164,36 @@
                                 </div>
 
                             </div>
-
                         </template>
 
                     </div>
 
                     <div class="slide-tracker-wrapper">
+
                         <template x-for="item in items">
                             <div :class="{'current-item' : item.id === current_item }" class="slide-tracker-box"></div>
                         </template>
+
                     </div>
+
                 </div>
                     
-                <div class="carousel-button-right" @click="slideRight" x-show="carousel_next()"><!-- right navigation -->
+                <div class="carousel-button-right" @click="slideRight" x-show="carousel_next()">
                     <div>&gt;</div>
                 </div>
 
+                <!-- decorator div to create a section of color -->
                 <div class="section-bg"></div>
+
             </div>
 
         </div>
+
     </div>
 
-    <!-- where -->
+
+
+    <!-- where section -->
     <div id="where">
 
         <div class="where-wrapper">
@@ -194,7 +212,7 @@
                     
                     <a class="card" href="https://www.linkedin.com/in/maxime-lec" target="_blank">
                         <img class="icon" src="./images/linkedin.jpeg"/>
-                        <div class="icon-label"><span>Find me on LinkedIn.</span></div>
+                        <div class="icon-label"><span>Find me on LinkedIn.</span></div> <!-- encapsulate text in span to help justify paragraph -->
                     </a>
 
                     <a class="card" href="https://github.com/max-lec/alpine-website" target="_blank">
@@ -212,15 +230,20 @@
             </div>
 
         </div>
+
     </div>
 
+
+    <!-- fun little theme switcher that uses css variables -->
     <div class="theme-switcher" x-data="theme_switcher()">
+
         <template x-for="item in items">
             <div class="switch-item" @click="switch_theme(item.theme)">
                 <div class="item-color" x-bind:style="`background-color: ${item.color}`"></div>
                 <div class="item-text" x-text="item.theme"></div>
             </div>
         </template>
+
     </div>
 
 </body>

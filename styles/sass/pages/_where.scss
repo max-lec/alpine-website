@@ -1,101 +1,76 @@
 #where {
-  width: 100%;
-  min-height: 100%;
+  @extend %cover-screen;
 
   .where-wrapper {
-    @extend %section_wrapper;
-    flex-direction: column;
-    height: calc(100% - 10vw);
 
-    .title-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: $content-padding;
-      opacity: 0.7;
-
-      span {
-        text-transform: uppercase;
-      }
-
-      &::before {
-        @extend %title-before-decoration;
-      }
-    }
-
-    .content-wrapper {
-      display: flex;
-      height: 100%;
-
-      .img-content {
-        padding: $content-padding;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      .cards-wrapper {
-        @extend %link_no_deco;
+    @include section_wrapper {
+      height: calc(100% - 10vw);
+  
+      .content-wrapper {
         display: flex;
-        flex-direction: column;
-        padding: $content-padding;
-        flex: 1;
-
-
-        .card {
-          display: flex;
-          flex-direction: row;
-          width: 100%;
-          background-color: $theme-bg-popup;
-          box-shadow: 0px 0px 5px rgba($theme-highlight-RGB, 10%);
-          align-items: center;
-
-          &:not(:first-child){
-            margin-top: 5%;
+        height: 100%;
+  
+        .img-content {
+          padding: $content-padding;
+  
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
-
-          .icon-label {    
-            flex: 1;
+        }
+  
+        .cards-wrapper {
+          @extend %link_no_deco;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding: $content-padding;
+  
+          .card {
             display: flex;
-            justify-content: center;
-
-            span {
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            background-color: $theme-bg-popup;
+            box-shadow: 0px 0px 5px rgba($theme-highlight-RGB, 10%);
+  
+            &:not(:first-child){
+              margin-top: 5%;
+            }
+  
+            .icon-label {    
+              flex: 1;
               display: flex;
-              justify-content: flex-start;
-              width: 80%
+              justify-content: center;
+  
+              span {
+                display: flex;
+                justify-content: flex-start;
+                width: 80%
+              }
+            }
+  
+            &:hover {
+              background-color: $theme-bg-popup;
+              box-shadow: 0px 0px 5px rgba($theme-highlight-RGB, 20%);
+              cursor: pointer;
             }
           }
-
-          &:hover {
-            background-color: $theme-bg-popup;
-            box-shadow: 0px 0px 5px rgba($theme-highlight-RGB, 20%);
-            cursor: pointer;
-          }
         }
       }
     }
-
   }
-
 }
 
+
+
+/* Section specific responsive parts */
 
 
 @include phone {
   .where-wrapper {
   
-
-    .title-wrapper {
-
-      span {
-        font-size: $h2-small;
-      }
-
-    }
-
     .content-wrapper {
       flex-direction: column;
 
@@ -122,14 +97,6 @@
 @include tablet {
   .where-wrapper {
 
-    .title-wrapper {
-
-      span {
-        font-size: $h2-medium;
-      }
-
-    }
-
     .content-wrapper {
       flex-direction: column;
 
@@ -148,22 +115,12 @@
         }
       }
     }
-    
   }
 }
 
 
 @include desktop {
   .where-wrapper {
-
-
-    .title-wrapper {
-
-      span {
-        font-size: $h2-big;
-      }
-
-    }
 
     .content-wrapper {
       flex-direction: row;
@@ -182,6 +139,5 @@
         font-size: $h3-big;
       }
     }
-    
   }
 }
